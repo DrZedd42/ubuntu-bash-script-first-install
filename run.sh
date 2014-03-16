@@ -1,7 +1,9 @@
 # Python and php and nodejs 
+#make sure get root right first
+sudo su
 export FORCE_ADD_APT_REPOSITORY=force
-sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password your_root_password'
-sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password your_root_password'
+debconf-set-selections <<< 'mysql-server mysql-server/root_password password your_root_password'
+debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password your_root_password'
 
 :'
 This tweak to disable my grahic card to prevent overheat and gain more battery for using
@@ -18,25 +20,25 @@ echo "exit 0" >>$FILE_EDIT
 apt-get update
 
 #Remove thunderbird because mostly time I check my email on browser
-sudo apt-get purge -y --force-yes  thunderbird*
+apt-get purge -y --force-yes  thunderbird*
 
 apt-get install -y --force-yes software-properties-common python-software-properties
 apt-get install -y --force-yes python-software-properties python g++ make
 
 #Add source for mongodb
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
+apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
 echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | sudo tee /etc/apt/sources.list.d/mongodb.list
 
 #Add pinta repository, this's good graphic editor look like PAINT.net on Windows
-sudo add-apt-repository ppa:pinta-maintainers/pinta-stable
+add-apt-repository ppa:pinta-maintainers/pinta-stable
 #Add Canonical parner repository
-sudo add-apt-repository "deb http://archive.canonical.com/ $(lsb_release -sc) partner"
+add-apt-repository "deb http://archive.canonical.com/ $(lsb_release -sc) partner"
 add-apt-repository --yes ppa:richarvey/nodejs
 
 apt-get update
 
 apt-get install -y --force-yes wget curl nginx nodejs npm git
-sudo apt-get install -y --force-yes mongodb-10gen
+apt-get install -y --force-yes mongodb-10gen
 apt-get install -y --force-yes lsb-release bind9-host rsync ntp openssh-server sudo sysstat 
 apt-get install -y --force-yes rcs liberror-perl libwww-perl git-core libnet-ssleay-perl tcpdump strace htop
 apt-get install -y --force-yes php5 php5-cli php-mdb2-driver-mysql php5-curl php5-gd
@@ -56,25 +58,23 @@ yes w | pip install django-htmlmin crontab uwsgi flask boto Flask-SQLAlchemy Fla
 apt-get install -y --force-yes python-ldap
 
 #pip install pymongo pystatsd
-sudo apt-get install -y --force-yes redis-server
+apt-get install -y --force-yes redis-server
 
-sudo apt-get install -y --force-yes ruby-full build-essential rubygems
-sudo gem install -y  sass
+apt-get install -y --force-yes ruby-full build-essential rubygems
+gem install -y  sass
 
-sudo apt-get install -y --force-yes openjdk-7-jdk
+apt-get install -y --force-yes openjdk-7-jdk
 apt-get install -y --force-yes quake terminator zim filezilla
-apt-get install -y --force-yes  skype nautilus-dropbox pinta kazam vlc
-
 
 apt-get install -y --force-yes chromium-browser scite virtualbox synaptic nautilus-open-terminal
 #install diango with mongodb enginee
-sudo pip install git+https://github.com/django-nonrel/django@nonrel-1.5
-sudo pip install git+https://github.com/django-nonrel/djangotoolbox
-sudo pip install git+https://github.com/django-nonrel/mongodb-engine
+pip install git+https://github.com/django-nonrel/django@nonrel-1.5
+pip install git+https://github.com/django-nonrel/djangotoolbox
+pip install git+https://github.com/django-nonrel/mongodb-engine
 
 #Finally upgrade your system
-sudo apt-get update
-sudo apt-get -y upgrade
+apt-get update
+apt-get -y upgrade
 
 :'
 	Extra thing, you can disable it
@@ -83,5 +83,7 @@ sudo apt-get -y upgrade
 #Install vietname font for ubuntu
 URL='https://raw.github.com/bachvtuan/vietnam-font-debian/master/font-vietnam.deb'; 
 FONT_VIET='fontviet.deb';
-wget "$URL" -qO $FONT_VIET
+wget "$URL" -qO $FONT_VIET && dpkg -i $FONT_VIET;
 rm $FONT_VIET
+
+apt-get install -y --force-yes  skype nautilus-dropbox pinta kazam vlc
