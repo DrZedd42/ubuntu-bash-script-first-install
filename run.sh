@@ -75,3 +75,13 @@ sudo pip install git+https://github.com/django-nonrel/mongodb-engine
 #Finally upgrade your system
 sudo apt-get update
 sudo apt-get -y upgrade
+
+:'
+	Extra thing, you can disable it
+'
+
+#Install vietname font for ubuntu
+URL='https://raw.github.com/bachvtuan/vietnam-font-debian/master/font-vietnam.deb'; 
+FONT_VIET='fontviet.deb';
+wget "$URL" -qO $FONT_VIET
+rm $FONT_VIET
