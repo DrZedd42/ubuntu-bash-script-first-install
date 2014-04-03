@@ -1,6 +1,4 @@
 # Python and php and nodejs 
-#make sure get root right first
-sudo su
 export FORCE_ADD_APT_REPOSITORY=force
 debconf-set-selections <<< 'mysql-server mysql-server/root_password password your_root_password'
 debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password your_root_password'
@@ -41,12 +39,13 @@ apt-get install -y --force-yes wget curl nginx nodejs npm git
 apt-get install -y --force-yes mongodb-10gen
 apt-get install -y --force-yes lsb-release bind9-host rsync ntp openssh-server sudo sysstat 
 apt-get install -y --force-yes rcs liberror-perl libwww-perl git-core libnet-ssleay-perl tcpdump strace htop
+apt-get install -y --force-yes nginx-extras  memcached
 apt-get install -y --force-yes php5 php5-cli php-mdb2-driver-mysql php5-curl php5-gd
-apt-get install -y --force-yes php5-memcache php5-mysql php5-tidy php5-mcrypt php-apc php5-fpm sudo php5-json
+apt-get install -y --force-yes php5-memcache php5-memcached php5-mysql php5-tidy php5-mcrypt php-apc php5-fpm sudo php5-json
 
-service php5-fpm restart
 #nginx configuration support php-fpm
 cp default /etc/nginx/sites-available
+service php5-fpm restart
 service nginx restart
 
 apt-get install -y --force-yes python-cherrypy3 python-memcache python-imaging python-django
