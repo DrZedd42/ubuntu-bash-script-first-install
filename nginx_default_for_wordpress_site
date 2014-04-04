@@ -1,0 +1,43 @@
+server {
+	listen 80;
+	server_name your_wordpress.com;
+#	listen [::]:80 default_server ipv6only=on;
+
+	root /your/wordpress/code;
+	index index.php index.html index.htm;
+
+
+	client_max_body_size 2000M;
+	
+	
+	location /doc/ {
+		alias /usr/share/doc/;
+		autoindex on;
+		allow 127.0.0.1;
+		allow ::1;
+		deny all;
+	}
+	location ~* \.ttf$ { 
+		add_header Access-Control-Allow-Origin *;
+	}
+	location / {
+		
+		if (-e $request_filename) {
+				expires max;
+				break;
+		}
+
+		if (!-e $request_filename) {
+				rewrite ^/(.*)$ /index.php?c=$1 last;
+		}
+	}
+	
+	location ~ \.php$ {
+                # With php5-fpm:
+                fastcgi_pass unix:/var/run/php5-fpm.sock;
+        	#fastcgi_pass 127.0.0.1:9000;
+                fastcgi_index index.php;
+                include fastcgi_params;
+        }
+}
+

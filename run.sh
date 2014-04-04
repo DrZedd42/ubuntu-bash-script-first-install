@@ -67,9 +67,10 @@ apt-get install -y --force-yes redis-server
 
 apt-get install -y --force-yes ruby-full build-essential rubygems
 gem install -y  sass
+gem install -y rb-inotify
 
 apt-get install -y --force-yes openjdk-7-jdk
-apt-get install -y --force-yes quake terminator zim filezilla
+apt-get install -y --force-yes guake terminator zim filezilla
 
 apt-get install -y --force-yes chromium-browser scite virtualbox synaptic nautilus-open-terminal
 #install diango with mongodb enginee
@@ -82,7 +83,7 @@ apt-get update
 apt-get -y upgrade
 
 :'
-	Extra thing, you can disable it
+  Extra thing, you can disable it
 '
 
 #Install vietname font for ubuntu
