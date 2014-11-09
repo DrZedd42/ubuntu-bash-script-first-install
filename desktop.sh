@@ -3,22 +3,7 @@ export FORCE_ADD_APT_REPOSITORY=force
 debconf-set-selections <<< 'mysql-server mysql-server/root_password password your_root_password'
 debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password your_root_password'
 
-:'
-This tweak to disable my grahic card to prevent overheat and gain more battery for using
-First command will overwrite old content with content just "exit 0"
-'
-#File need to edit
-FILE_EDIT=/etc/rc.local
-
-echo "chown $USER /sys/kernel/debug/vgaswitcheroo/switch" >$FILE_EDIT
-#Add next line
-echo "echo OFF > /sys/kernel/debug/vgaswitcheroo/switch" >>$FILE_EDIT
-echo "exit 0" >>$FILE_EDIT
-
 apt-get update
-
-#Remove thunderbird because mostly time I check my email on browser
-apt-get purge -y --force-yes  thunderbird*
 
 apt-get install -y --force-yes software-properties-common python-software-properties
 apt-get install -y --force-yes python-software-properties python g++ make
@@ -29,14 +14,12 @@ echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | 
 
 #Add pinta repository, this's good graphic editor look like PAINT.net on Windows
 add-apt-repository ppa:pinta-maintainers/pinta-stable
-#Add Canonical parner repository
-add-apt-repository "deb http://archive.canonical.com/ $(lsb_release -sc) partner"
-add-apt-repository --yes ppa:richarvey/nodejs
-
+#tlp to save battery
+add-apt-repository ppa:linrunner/tlp
 apt-get update
 
 apt-get install -y --force-yes wget curl nginx nodejs npm git
-apt-get install -y --force-yes mongodb-10gen
+apt-get install -y --force-yes mongodb-org
 apt-get install -y --force-yes lsb-release bind9-host rsync ntp openssh-server sudo sysstat 
 apt-get install -y --force-yes rcs liberror-perl libwww-perl git-core libnet-ssleay-perl tcpdump strace htop
 apt-get install -y --force-yes nginx-extras  memcached
@@ -65,7 +48,7 @@ apt-get install -y --force-yes python-ldap
 #pip install pymongo pystatsd
 apt-get install -y --force-yes redis-server
 
-apt-get install -y --force-yes ruby-full build-essential rubygems
+apt-get install -y --force-yes ruby-full build-essential
 gem install -y  sass
 gem install -y rb-inotify
 
@@ -73,16 +56,22 @@ apt-get install -y --force-yes openjdk-7-jdk
 apt-get install -y --force-yes guake terminator zim filezilla
 
 apt-get install -y --force-yes chromium-browser scite virtualbox synaptic nautilus-open-terminal
+
+#Thinkpad extra
+#http://askubuntu.com/questions/285434/is-there-a-power-saving-application-similar-to-jupiter
+apt-get install tp-smapi-dkms acpi-call-tools tlp tlp-rdw smartmontools ethtool
+
 #install diango with mongodb enginee
-pip install git+https://github.com/django-nonrel/django@nonrel-1.5
-pip install git+https://github.com/django-nonrel/djangotoolbox
-pip install git+https://github.com/django-nonrel/mongodb-engine
+
+#pip install git+https://github.com/django-nonrel/django@nonrel-1.5
+#pip install git+https://github.com/django-nonrel/djangotoolbox
+#pip install git+https://github.com/django-nonrel/mongodb-engine
 
 #Finally upgrade your system
 apt-get update
 apt-get -y upgrade
 
-:'
+'
   Extra thing, you can disable it
 '
 
