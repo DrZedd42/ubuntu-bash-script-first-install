@@ -15,6 +15,8 @@ add-apt-repository ppa:indicator-brightness/ppa
 #tlp to save battery
 add-apt-repository ppa:linrunner/tlp
 
+#Flux to project your eye  when working at night
+add-apt-repository ppa:kilian/f.lux
 
 
 apt-get update
@@ -64,7 +66,7 @@ apt-get install -y --force-yes chromium-browser scite synaptic nautilus-open-ter
 #Thinkpad extra
 #http://askubuntu.com/questions/285434/is-there-a-power-saving-application-similar-to-jupiter
 apt-get install -y --force-yes tp-smapi-dkms acpi-call-tools tlp tlp-rdw smartmontools ethtool
-apt-get install -y --force-yes indicator-brightness
+apt-get install -y --force-yes indicator-brightness fluxgui
 
 #install diango with mongodb enginee
 
@@ -76,9 +78,9 @@ apt-get install -y --force-yes indicator-brightness
 apt-get update
 apt-get -y upgrade
 
-'
-  Extra thing, you can disable it
-'
+
+#  Extra thing, you can disable it
+
 
 #Install vietname font for ubuntu
 #URL='https://raw.github.com/bachvtuan/vietnam-font-debian/master/font-vietnam.deb'; 
