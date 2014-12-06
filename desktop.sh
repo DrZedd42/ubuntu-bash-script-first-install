@@ -3,10 +3,6 @@ export FORCE_ADD_APT_REPOSITORY=force
 debconf-set-selections <<< 'mysql-server mysql-server/root_password password your_root_password'
 debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password your_root_password'
 
-apt-get update
-
-apt-get install -y --force-yes software-properties-common python-software-properties
-apt-get install -y --force-yes python-software-properties python g++ make
 
 #Add source for mongodb
 apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
@@ -14,9 +10,17 @@ echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | 
 
 #Add pinta repository, this's good graphic editor look like PAINT.net on Windows
 add-apt-repository ppa:pinta-maintainers/pinta-stable
+
+add-apt-repository ppa:indicator-brightness/ppa
 #tlp to save battery
 add-apt-repository ppa:linrunner/tlp
+
+
+
 apt-get update
+
+apt-get install -y --force-yes software-properties-common python-software-properties
+apt-get install -y --force-yes python-software-properties python g++ make
 
 apt-get install -y --force-yes wget curl nginx nodejs npm git
 apt-get install -y --force-yes mongodb-org
@@ -55,11 +59,12 @@ gem install -y rb-inotify
 apt-get install -y --force-yes openjdk-7-jdk
 apt-get install -y --force-yes guake terminator zim filezilla
 
-apt-get install -y --force-yes chromium-browser scite virtualbox synaptic nautilus-open-terminal
+apt-get install -y --force-yes chromium-browser scite synaptic nautilus-open-terminal
 
 #Thinkpad extra
 #http://askubuntu.com/questions/285434/is-there-a-power-saving-application-similar-to-jupiter
-apt-get install tp-smapi-dkms acpi-call-tools tlp tlp-rdw smartmontools ethtool
+apt-get install -y --force-yes tp-smapi-dkms acpi-call-tools tlp tlp-rdw smartmontools ethtool
+apt-get install -y --force-yes indicator-brightness
 
 #install diango with mongodb enginee
 
@@ -76,9 +81,9 @@ apt-get -y upgrade
 '
 
 #Install vietname font for ubuntu
-URL='https://raw.github.com/bachvtuan/vietnam-font-debian/master/font-vietnam.deb'; 
-FONT_VIET='fontviet.deb';
-wget "$URL" -qO $FONT_VIET && dpkg -i $FONT_VIET;
-rm $FONT_VIET
+#URL='https://raw.github.com/bachvtuan/vietnam-font-debian/master/font-vietnam.deb'; 
+#FONT_VIET='fontviet.deb';
+#wget "$URL" -qO $FONT_VIET && dpkg -i $FONT_VIET;
+#rm $FONT_VIET
 
 apt-get install -y --force-yes  skype nautilus-dropbox pinta kazam vlc
