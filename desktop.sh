@@ -26,7 +26,7 @@ apt-get install -y --force-yes python-software-properties python g++ make
 
 apt-get install -y --force-yes wget curl nginx nodejs npm git
 apt-get install -y --force-yes mongodb-org
-apt-get install -y --force-yes lsb-release bind9-host rsync ntp openssh-server sudo sysstat 
+apt-get install -y --force-yes lsb-release bind9 rsync ntp openssh-server sudo sysstat 
 apt-get install -y --force-yes rcs liberror-perl libwww-perl git-core libnet-ssleay-perl tcpdump strace htop
 apt-get install -y --force-yes nginx-extras  memcached
 apt-get install -y --force-yes php5 php5-cli php-mdb2-driver-mysql php5-curl php5-gd
