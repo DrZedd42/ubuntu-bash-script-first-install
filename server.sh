@@ -10,7 +10,7 @@ apt-get install -y --force-yes python-software-properties python g++ make
 
 #Add source for mongodb
 apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
-echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | sudo tee /etc/apt/sources.list.d/mongodb.list
+echo "deb http://repo.mongodb.org/apt/ubuntu "$(lsb_release -sc)"/mongodb-org/3.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.0.list
 
 #Add Canonical parner repository
 add-apt-repository "deb http://archive.canonical.com/ $(lsb_release -sc) partner"
@@ -19,7 +19,7 @@ add-apt-repository --yes ppa:richarvey/nodejs
 apt-get update
 
 apt-get install -y --force-yes wget curl nginx nodejs npm git
-apt-get install -y --force-yes mongodb-10gen
+apt-get install -y --force-yes mongodb-org
 apt-get install -y --force-yes lsb-release bind9-host rsync ntp openssh-server sudo sysstat 
 apt-get install -y --force-yes rcs liberror-perl libwww-perl git-core libnet-ssleay-perl tcpdump strace htop
 apt-get install -y --force-yes nginx-extras memcached

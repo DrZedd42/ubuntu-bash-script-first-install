@@ -6,7 +6,7 @@ debconf-set-selections <<< 'mysql-server mysql-server/root_password_again passwo
 
 #Add source for mongodb
 apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
-echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | sudo tee /etc/apt/sources.list.d/mongodb.list
+echo "deb http://repo.mongodb.org/apt/ubuntu "$(lsb_release -sc)"/mongodb-org/3.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.0.list
 
 #Add pinta repository, this's good graphic editor look like PAINT.net on Windows
 add-apt-repository ppa:pinta-maintainers/pinta-stable
